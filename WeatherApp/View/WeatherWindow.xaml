@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherApp.View"
         xmlns:vm="clr-namespace:WeatherApp.ViewModel"
+        xmlns:vc="clr-namespace:WeatherApp.ViewModel.ValueConverter"
         mc:Ignorable="d"
-        Title="WeatherWindow" Height="600" Width="400">
+        Title="WeatherWindow" Height="600" Width="500">
     <Window.Resources>
         <vm:WeatherViewModel x:Key="vm"/>
+        <vc:BoolToPrecipitationConverter x:Key="boolToPercopitation"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource vm}">
         <Grid.RowDefinitions>
@@ -31,7 +33,8 @@
                                        FontSize="18"
                                        FontWeight="Bold"/>
                             <TextBlock Text="{Binding Country.LocalizedName}"
-                                       FontSize="16"/>
+                                       FontSize="16"
+                                       Margin="20, 0"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -48,9 +51,14 @@
                 <TextBlock DataContext="{StaticResource vm}"
                            Text="{Binding SelectedCity.LocalizedName}"
                            Foreground="#f4f4f8"
-                           FontSize="20"
+                           FontSize="22"
+                           FontWeight="Bold"
                            Margin="20, 0"/>
                 <TextBlock Text="{Binding WeatherText}"
+                           Foreground="#f4f4f8"
+                           FontSize="16"
+                           Margin="20, 0"/>
+                <TextBlock Text="{Binding HasPrecipitation, Converter={StaticResource boolToPercopitation}}"
                            Foreground="#f4f4f8"
                            FontSize="18"
                            Margin="20, 0"/>
