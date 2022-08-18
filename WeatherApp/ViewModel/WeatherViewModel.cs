@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Model;
+using WeatherApp.ViewModel.Helpers;
 
 namespace WeatherApp.ViewModel
 {
@@ -46,7 +47,32 @@ namespace WeatherApp.ViewModel
             }
         }
 
+        public WeatherViewModel()
+        {
+            if(DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
+            {
+                selectedCity = new City
+                {
+                    LocalizedName = "Moscow"
+                };
+                currentConditions = new CurrentConditions
+                {
+                    WeatherText = "Partly cloudy",
+                    Temperature = new Temperature
+                    {
+                        Metric = new Units
+                        {
+                            Value = 21
+                        }
+                    }
+                };
+            }
+        }
 
+        public async void MakeQuery()
+        {
+            var cities = await AccuWeatherHelper.GetCitiesAsync(Query);
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

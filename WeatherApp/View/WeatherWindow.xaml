@@ -42,7 +42,7 @@
                            Text="{Binding SelectedCity.LocalizedName}"
                            Foreground="#f4f4f8"
                            FontSize="20"
-                           Margin="0, 20"/>
+                           Margin="20, 0"/>
                 <TextBlock Text="{Binding WeatherText}"
                            Foreground="#f4f4f8"
                            FontSize="18"
