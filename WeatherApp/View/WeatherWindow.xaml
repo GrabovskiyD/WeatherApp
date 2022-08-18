@@ -26,9 +26,13 @@
                       SelectedValue="{Binding SelectedCity}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <TextBlock Text="{Binding LocalizedName}"/>
-                        </Grid>
+                        <StackPanel>
+                            <TextBlock Text="{Binding LocalizedName}"
+                                       FontSize="18"
+                                       FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Country.LocalizedName}"
+                                       FontSize="16"/>
+                        </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

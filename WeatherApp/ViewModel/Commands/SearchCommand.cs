@@ -32,6 +32,7 @@ namespace WeatherApp.ViewModel.Commands
 
         public void Execute(object? parameter)
         {
+            VM.Cities.Clear();
             VM.MakeQuery();
         }
     }
